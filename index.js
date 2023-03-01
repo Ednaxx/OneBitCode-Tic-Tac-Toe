@@ -20,189 +20,55 @@ let playerOrder = [];
 
 // Game Buttons event listeners
 
-button1.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
+button1.addEventListener('click', mark)
+button2.addEventListener('click', mark)
+button3.addEventListener('click', mark)
+button4.addEventListener('click', mark)
+button5.addEventListener('click', mark)
+button6.addEventListener('click', mark)
+button7.addEventListener('click', mark)
+button8.addEventListener('click', mark)
+button9.addEventListener('click', mark)
 
-        currentPlayer++
+function buttonBgDarker() {
+    this.style.backgroundColor = "rgba(270, 270, 270, 0.70)"
+};
 
-        this.disabled = true
+function buttonBgNormal() {
+    this.style.backgroundColor = "rgba(255, 255, 255, 0.87)"
+};
 
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
 
-        currentPlayer--
+button1.addEventListener("mouseover", buttonBgDarker);
+button1.addEventListener("mouseout", buttonBgNormal);
 
-        this.disabled = true
+button2.addEventListener("mouseover", buttonBgDarker);
+button2.addEventListener("mouseout", buttonBgNormal);
 
-        nextTurn()
-    };
-});
-button2.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
+button3.addEventListener("mouseover", buttonBgDarker);
+button3.addEventListener("mouseout", buttonBgNormal);
 
-        currentPlayer++
-        this.disabled = true
+button4.addEventListener("mouseover", buttonBgDarker);
+button4.addEventListener("mouseout", buttonBgNormal);
 
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
+button5.addEventListener("mouseover", buttonBgDarker);
+button5.addEventListener("mouseout", buttonBgNormal);
 
-        currentPlayer--
-        this.disabled = true
+button6.addEventListener("mouseover", buttonBgDarker);
+button6.addEventListener("mouseout", buttonBgNormal);
 
-        nextTurn()
-    };
-});
-button3.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
+button7.addEventListener("mouseover", buttonBgDarker);
+button7.addEventListener("mouseout", buttonBgNormal);
 
-        currentPlayer++
-        this.disabled = true
+button8.addEventListener("mouseover", buttonBgDarker);
+button8.addEventListener("mouseout", buttonBgNormal);
 
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
+button9.addEventListener("mouseover", buttonBgDarker);
+button9.addEventListener("mouseout", buttonBgNormal);
 
-        currentPlayer--
-        this.disabled = true
 
-        nextTurn()
-    };
-});
-button4.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
 
-        currentPlayer++
-        this.disabled = true
-
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
-
-        currentPlayer--
-        this.disabled = true
-
-        nextTurn()
-    };
-});
-button5.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
-
-        currentPlayer++
-        this.disabled = true
-
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
-
-        currentPlayer--
-        this.disabled = true
-
-        nextTurn()
-    };
-});
-button6.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
-
-        currentPlayer++
-        this.disabled = true
-
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
-
-        currentPlayer--
-        this.disabled = true
-
-        nextTurn()
-    };
-});
-button7.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
-
-        currentPlayer++
-        this.disabled = true
-
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
-
-        currentPlayer--
-        this.disabled = true
-
-        nextTurn()
-    };
-});
-button8.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
-
-        currentPlayer++
-        this.disabled = true
-
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
-
-        currentPlayer--
-        this.disabled = true
-
-        nextTurn()
-    };
-});
-button9.addEventListener('click', function() {
-    if(currentPlayer == 0) {
-        this.innerText = "X"
-        this.style.color = "red"
-
-        currentPlayer++
-        this.disabled = true
-
-        nextTurn()
-    }
-    else {
-        this.innerText = "O"
-        this.style.color = "blue"
-
-        currentPlayer--
-        this.disabled = true
-
-        nextTurn()
-    };
-});
-
+document.getElementById("playAgainButton").addEventListener("click", function() {location.reload()})
 
 // Start game input
 
@@ -248,35 +114,196 @@ document.getElementById("startForm").addEventListener("submit", function (event)
     };
 });
 
+function mark() {
+    if(currentPlayer == 0) {
+        this.innerText = "X"
+        this.style.color = "red"
+
+        currentPlayer++
+
+        this.disabled = true
+        this.removeEventListener("mouseover", buttonBgDarker);
+
+        nextTurn()
+    }
+    else {
+        this.innerText = "O"
+        this.style.color = "blue"
+
+        currentPlayer--
+
+        this.disabled = true
+        this.removeEventListener("mouseover", buttonBgDarker);
+
+        nextTurn()
+    };
+};
+
 function nextTurn() {
     document.getElementById("currentTurn").innerText = playerOrder[currentPlayer];
 
-    // From b1
-
-    if(button1.innerText === button2.innerText && button1.innerText === button3.innerText && button2.innerText === button3.innerText) {
-        console.log(button1.innerText + " Wins!");
+    if (currentPlayer == 0) {
+        document.getElementById("currentTurn").style.color = "red"
     }
-    else if (button1.innerText === button4.innerText && button1.innerText === button7.innerText && button4.innerText === button7.innerText) {
-        console.log(button1.innerText + " Wins!");
-    }
-    else if (button1.innerText === button5.innerText && button1.innerText === button9.innerText && button5.innerText === button9.innerText) {
-        console.log(button1.innerText + " Wins!");
-    }
+    else {
+        document.getElementById("currentTurn").style.color = "blue"
+    };
 
-    // From b2
+    // First line
 
-    else if (button2.innerText === button5.innerText && button2.innerText === button8.innerText && button5.innerText === button8.innerText) {
-        console.log(button1.innerText + " Wins!");
+    if(button1.innerText === button2.innerText && button1.innerText === button3.innerText && button2.innerText === button3.innerText 
+        && button1.innerText != "" && button2.innerText != "" && button3.innerText != "") 
+        {
+            winState(button1.innerText)
+        
+            button1.style.backgroundColor = "#8feb34";
+            button2.style.backgroundColor = "#8feb34";
+            button3.style.backgroundColor = "#8feb34";
+        }
+
+    // Second line
+
+    else if (button4.innerText === button5.innerText && button4.innerText === button6.innerText && button5.innerText === button6.innerText
+        && button4.innerText != "" && button5.innerText != "" && button6.innerText != "")
+        {
+            winState(button4.innerText)
+            
+            button4.style.backgroundColor = "#8feb34";
+            button5.style.backgroundColor = "#8feb34";
+            button6.style.backgroundColor = "#8feb34";
+        }
+
+    // Third line
+
+    else if (button7.innerText === button8.innerText && button7.innerText === button9.innerText && button8.innerText === button9.innerText
+        && button7.innerText != "" && button8.innerText != "" && button9.innerText != "")
+        {
+            winState(button7.innerText)
+        
+            button7.style.backgroundColor = "#8feb34";
+            button8.style.backgroundColor = "#8feb34";
+            button9.style.backgroundColor = "#8feb34";
+        }
+
+    // First column
+
+    else if (button1.innerText === button4.innerText && button1.innerText === button7.innerText && button4.innerText === button7.innerText 
+        && button1.innerText != "" && button4.innerText != "" && button7.innerText != "") 
+        {
+            winState(button1.innerText)
+
+            button1.style.backgroundColor = "#8feb34";
+            button4.style.backgroundColor = "#8feb34";
+            button7.style.backgroundColor = "#8feb34";
+        }
+
+    // Second column
+
+    else if (button2.innerText === button5.innerText && button2.innerText === button8.innerText && button5.innerText === button8.innerText 
+        && button2.innerText != "" && button5.innerText != "" && button8.innerText != "") 
+        {
+            winState(button2.innerText)
+        
+            button2.style.backgroundColor = "#8feb34";
+            button5.style.backgroundColor = "#8feb34";
+            button8.style.backgroundColor = "#8feb34";
+        }
+
+    // Third column
+
+    else if (button3.innerText === button6.innerText && button3.innerText === button9.innerText && button6.innerText === button9.innerText
+        && button3.innerText != "" && button6.innerText != "" && button9.innerText != "") 
+        {
+            winState(button3.innerText)
+        
+            button3.style.backgroundColor = "#8feb34";
+            button6.style.backgroundColor = "#8feb34";
+            button9.style.backgroundColor = "#8feb34";
+        }
+
+    // First diagonal
+
+    else if (button1.innerText === button5.innerText && button1.innerText === button9.innerText && button5.innerText === button9.innerText 
+        && button1.innerText != "" && button5.innerText != "" && button9.innerText != "") 
+        {
+            
+            winState(button1.innerText)
+        
+            button1.style.backgroundColor = "#8feb34";
+            button5.style.backgroundColor = "#8feb34";
+            button9.style.backgroundColor = "#8feb34";
+        }
+
+    // Second diagonal
+
+    else if (button3.innerText === button5.innerText && button3.innerText === button7.innerText && button5.innerText === button7.innerText
+        && button3.innerText != "" && button5.innerText != "" && button7.innerText != "")
+        {
+            winState(button3.innerText)
+            
+            button3.style.backgroundColor = "#8feb34";
+            button5.style.backgroundColor = "#8feb34";
+            button7.style.backgroundColor = "#8feb34";
+        }
+
+    // Draw
+
+    else if (button1.innerText != "" && button2.innerText != "" && button3.innerText != "" && button4.innerText != "" 
+    && button5.innerText != "" && button6.innerText != "" && button7.innerText != "" && button8.innerText != "" && button9.innerText != "")
+    {draw()};
+    
+};
+
+
+function winState(player) {
+    disableButtons()
+
+    if (player == "X") {
+        document.getElementById("gameResult").innerText = playerOrder[0] + " wins!";
     }
+    else {
+        document.getElementById("gameResult").innerText = playerOrder[1] + " wins!";
+    };
 
-    // From b3
+    document.getElementById("pop-up-window").style.display = "flex";
+    document.getElementById("gameResult").style.color = document.getElementById("currentTurn").style.color;
+};
 
-    else if (button1.innerText === button4.innerText && button1.innerText === button7.innerText && button4.innerText === button7.innerText) {
-        console.log(button1.innerText + " Wins!");
-    }
-    else if (button1.innerText === button4.innerText && button1.innerText === button7.innerText && button4.innerText === button7.innerText) {
-        console.log(button1.innerText + " Wins!");
-    }
+function draw() {
+    disableButtons()
 
-    // From b4
-}
+    document.getElementById("gameResult").innerText = "Draw!";
+
+    document.getElementById("pop-up-window").style.display = "flex";
+    document.getElementById("gameResult").style.color = "#777"
+};
+
+
+function disableButtons() {
+    button1.disabled = true
+    button1.removeEventListener("mouseover", buttonBgDarker);
+
+    button2.disabled = true
+    button2.removeEventListener("mouseover", buttonBgDarker);
+
+    button3.disabled = true
+    button3.removeEventListener("mouseover", buttonBgDarker);
+
+    button4.disabled = true
+    button4.removeEventListener("mouseover", buttonBgDarker);
+
+    button5.disabled = true
+    button5.removeEventListener("mouseover", buttonBgDarker);
+
+    button6.disabled = true
+    button6.removeEventListener("mouseover", buttonBgDarker);
+
+    button7.disabled = true
+    button7.removeEventListener("mouseover", buttonBgDarker);
+
+    button8.disabled = true
+    button8.removeEventListener("mouseover", buttonBgDarker);
+
+    button9.disabled = true
+    button9.removeEventListener("mouseover", buttonBgDarker);
+};
