@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#title {
+    background-color: white;
+    border: solid black 2px;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+#frame {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #777;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+}
+
+#start-screen {
+    background-color: white;
+    border-radius: 15px;
+}
+
+#start-screen form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 20px;
+    gap: 10px;
+}
+
+#start-screen form p {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+#gameStart {
+    align-self: center;
+    width: 15vh;
+    height: 5vh;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#start-screen form input[type="text"] {
+    padding: 5px;
+    font-size: 18px;
+}
+
+#game {
+    background-color: white;
+    align-self: center;
+    padding: 20px;
+    border-radius: 20px;
+    display: none;
+}
+
+#currentTurn {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+#buttons {
+    background-color: #777;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px 5px;
+}
+
+#game button {
+    height: 13vh;
+    width: 13vh;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.87);
+}
+
+#game button:hover {
+    background-color: rgba(270, 270, 270, 0.70);;
+}
+
+#buttons button{
+    font-size: 50px;
+}
